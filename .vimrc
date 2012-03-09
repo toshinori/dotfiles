@@ -1,7 +1,9 @@
+" バックアップを作成しない
 set nobackup
 
 " 文字コードを UTF-8 に設定
 set encoding=utf-8
+
 " ファイル読み込み時の文字コード検索順
 set fileencodings=utf-8,ucs-bom,euc-jp,cp932,iso-2022-jp
 set fileencodings+=,ucs-2le,ucs-2
@@ -41,6 +43,10 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 " http://d.hatena.ne.jp/kattton/20110425/1303746056
 set t_Co=256
 colorscheme desert
+
+" カレント行をハイライト 
+set cursorline
+highlight CursorLine term=reverse cterm=none
 
 " Vundleの設定開始
 " http://vim-users.jp/2011/04/hack215/
@@ -106,5 +112,6 @@ autocmd BufNewFile *.sh 0r ~/.vim/templates/sh.tpl
 
 " 挿入モードで開始
 let g:unite_enable_start_insert = 1
+
 
 
