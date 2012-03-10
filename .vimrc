@@ -26,6 +26,30 @@ set showmatch
 " if文などでインデント
 set cindent
 
+" 検索結果をハイライト表示
+set hlsearch
+" インクリメンタルサーチ
+set incsearch
+" 大文字小文字を区別しない
+set ignorecase
+" 検索で小文字なら大文字を無視、大文字なら無視しない設定
+set smartcase
+
+" http://blog.appling.jp/archives/140
+" ESCキー2度押しでハイライトを消す
+nnoremap <Esc><Esc> :<C-u>set nohlsearch<Return>
+nnoremap / :<C-u>set hlsearch<Return>/
+nnoremap ? :<C-u>set hlsearch<Return>?
+nnoremap * :<C-u>set hlsearch<Return>*
+nnoremap # :<C-u>set hlsearch<Return>#"
+
+" コロンセミコロン入れ変え
+noremap ; : 
+noremap : ;
+
+"スクロール時の余白を確保
+set scrolloff=5
+
 " 自動でカッコを閉じる
 " http://d.hatena.ne.jp/spiritloose/20061113/1163401194　
 inoremap { {}<LEFT>
@@ -66,6 +90,7 @@ Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'vim-ruby/vim-ruby'
 " Bundle 'guicolorscheme.vim'
+Bundle 'tpope/vim-rails' 
 
 " Vundleの設定終了
 filetype plugin on
@@ -90,6 +115,7 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " RSenseでオムニ補完を使う
+" http://cx4a.org/software/rsense/index.ja.html#.E6.9C.80.E6.96.B0.E5.AE.89.E5.AE.9A.E6.9D.BF__v0.3_
 let g:rsenseHome = "/opt/rsense-0.3"
 if !exists('g:neocomplcache_omni_patterns')
 	let g:neocomplcache_omni_patterns = {}
@@ -106,12 +132,15 @@ let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
 set splitright
 
+" https://github.com/Shougo/unite.vim/blob/master/doc/unite.jax
+" Unite
+
 " 新規作成時のテンプレートの設定
 autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
 autocmd BufNewFile *.sh 0r ~/.vim/templates/sh.tpl
 
 " 挿入モードで開始
-let g:unite_enable_start_insert = 1
+" let g:unite_enable_start_insert = 1
 
 
 
