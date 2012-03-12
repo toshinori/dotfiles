@@ -1,6 +1,5 @@
 " バックアップを作成しない
 set nobackup
-
 " 文字コードを UTF-8 に設定
 set encoding=utf-8
 
@@ -43,6 +42,11 @@ nnoremap ? :<C-u>set hlsearch<Return>?
 nnoremap * :<C-u>set hlsearch<Return>*
 nnoremap # :<C-u>set hlsearch<Return>#"
 
+""set noimdisable
+""set iminsert=0 imsearch=0
+""set noimcmdline
+""inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+
 " コロンセミコロン入れ変え
 noremap ; : 
 noremap : ;
@@ -77,15 +81,18 @@ highlight CursorLine term=reverse cterm=none
 set nocompatible
 filetype off
 
+" Vundle
 set rtp+=~/.vim/vundle/vundle.git/
 call vundle#rc()
 
-" Vundle
 " http://vim-users.jp/2011/04/hack215/
 Bundle 'Shougo/neocomplcache'
-" Bundle 'Shougo/vimshell'
+" vimshellを使うにはvimprocが必要
+" またvimprocは~/.vim/bundle/vimproc/make -f make_gcc.makeを
+" 実行してproc.soを生成する必要がある
+Bundle 'Shougo/vimshell'
+Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
-" Bundle 'unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'vim-ruby/vim-ruby'
