@@ -98,6 +98,7 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'vim-ruby/vim-ruby'
 " Bundle 'guicolorscheme.vim'
 Bundle 'tpope/vim-rails' 
+Bundle 'The-NERD-tree'
 
 " Vundleの設定終了
 filetype plugin on
