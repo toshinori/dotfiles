@@ -27,10 +27,13 @@ set cindent
 
 " 検索結果をハイライト表示
 set hlsearch
+
 " インクリメンタルサーチ
 set incsearch
+
 " 大文字小文字を区別しない
 set ignorecase
+
 " 検索で小文字なら大文字を無視、大文字なら無視しない設定
 set smartcase
 
@@ -55,17 +58,18 @@ noremap : ;
 set scrolloff=5
 
 " 自動でカッコを閉じる
+" AutoCloseに移行
 " http://d.hatena.ne.jp/spiritloose/20061113/1163401194　
-inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
-inoremap ' ''<LEFT>
-vnoremap { "zdi^V{<C-R>z}<ESC>
-vnoremap [ "zdi^V[<C-R>z]<ESC>
-vnoremap ( "zdi^V(<C-R>z)<ESC>
-vnoremap " "zdi^V"<C-R>z^V"<ESC>
-vnoremap ' "zdi'<C-R>z'<ESC>
+"inoremap { {}<LEFT>
+"inoremap [ []<LEFT>
+"inoremap ( ()<LEFT>
+"inoremap " ""<LEFT>
+"inoremap ' ''<LEFT>
+"vnoremap { "zdi^V{<C-R>z}<ESC>
+"vnoremap [ "zdi^V[<C-R>z]<ESC>
+"vnoremap ( "zdi^V(<C-R>z)<ESC>
+"vnoremap " "zdi^V"<C-R>z^V"<ESC>
+"vnoremap ' "zdi'<C-R>z'<ESC>
 
 " 色を変更
 " http://d.hatena.ne.jp/kattton/20110425/1303746056
@@ -96,9 +100,11 @@ Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'vim-ruby/vim-ruby'
-" Bundle 'guicolorscheme.vim'
 Bundle 'tpope/vim-rails' 
 Bundle 'The-NERD-tree'
+" http//nanasi.jp/articles/vim/enhancedcommentify_vim.html
+Bundle 'EnhCommentify.vim'
+Bundle 'AutoClose'
 
 " Vundleの設定終了
 filetype plugin on
@@ -142,6 +148,10 @@ set splitright
 
 " https://github.com/Shougo/unite.vim/blob/master/doc/unite.jax
 " Unite
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 
 " 新規作成時のテンプレートの設定
 autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
