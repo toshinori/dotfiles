@@ -3,6 +3,7 @@ PS1="[\u@\h \W]\$ "
 alias ls='ls --color=auto'
 alias vi='vim'
 alias sudo='sudo '
+alias tmux='tmux -2'
 
 export RSENSE_HOME=/opt/rsense-0.3
 
@@ -13,3 +14,14 @@ if [[ -e  $HOME/.rvm/scripts/rvm ]] ; then
 fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+
+#if [ -z "$PS1" ]; then return ; fi
+
+#if [ -z $TMUX ] ; then
+#    if [ -z `tmux ls` ] ; then
+#        tmux
+#    else
+#        tmux attach
+#    fi
+#fi

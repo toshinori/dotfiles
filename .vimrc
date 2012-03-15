@@ -73,8 +73,10 @@ set scrolloff=5
 
 " 色を変更
 " http://d.hatena.ne.jp/kattton/20110425/1303746056
-set t_Co=256
-colorscheme desert
+"set t_Co=256
+"colorscheme desert
+colorscheme molokai
+"colorscheme zenburn
 
 " カレント行をハイライト 
 set cursorline
