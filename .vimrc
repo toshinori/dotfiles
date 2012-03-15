@@ -73,10 +73,12 @@ set scrolloff=5
 
 " 色を変更
 " http://d.hatena.ne.jp/kattton/20110425/1303746056
+" tmuxを使う場合はオフにしないと色がでない
 "set t_Co=256
 "colorscheme desert
 colorscheme molokai
 "colorscheme zenburn
+"colorscheme dw_green
 
 " カレント行をハイライト 
 set cursorline
@@ -151,16 +153,35 @@ set splitright
 " https://github.com/Shougo/unite.vim/blob/master/doc/unite.jax
 " Unite
 " バッファ一覧
+"nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+"noremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+
+" Unite
+" http://d.hatena.ne.jp/ruedap/20110117/vim_unite_plugin_1_wee
+let g:unite_enable_start_insert = 1
+
+" インサート／ノーマルどちらからでも呼び出せるようにキーマップ
+nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+inoremap <silent> <C-f> <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <C-b> :<C-u>Unite buffer file_mru<CR>
+inoremap <silent> <C-b> <ESC>:<C-u>Unite buffer file_mru<CR>
+
+" バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 " ファイル一覧
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 " 新規作成時のテンプレートの設定
 autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
 autocmd BufNewFile *.sh 0r ~/.vim/templates/sh.tpl
 
-" 挿入モードで開始
-" let g:unite_enable_start_insert = 1
 
 
 
