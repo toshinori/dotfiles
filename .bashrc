@@ -3,7 +3,7 @@ PS1="[\u@\h \W]\$ "
 alias ls='ls --color=auto'
 alias vi='vim'
 alias sudo='sudo '
-alias tmux='tmux -2'
+alias tmux='tmux -2'	# -2を付けないとVimが256にならない
 
 export RSENSE_HOME=/opt/rsense-0.3
 

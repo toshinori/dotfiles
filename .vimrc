@@ -78,7 +78,7 @@ set scrolloff=5
 "colorscheme desert
 colorscheme molokai
 "colorscheme zenburn
-"colorscheme dw_green
+"colorscheme dw_blue
 
 " カレント行をハイライト 
 set cursorline
@@ -109,6 +109,7 @@ Bundle 'The-NERD-tree'
 " http//nanasi.jp/articles/vim/enhancedcommentify_vim.html
 Bundle 'EnhCommentify.vim'
 Bundle 'AutoClose'
+Bundle 'Markdown'
 
 " Vundleの設定終了
 filetype plugin on
