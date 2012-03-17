@@ -184,5 +184,3 @@ autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
 autocmd BufNewFile *.sh 0r ~/.vim/templates/sh.tpl
 
 
-
-

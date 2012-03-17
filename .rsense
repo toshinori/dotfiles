@@ -1,3 +1,0 @@
-home = /opt/rsense-0.3
-load-path = /home/dev/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby/1.9.1:/home/dev/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby/1.9.1/x86_64-linux:/home/dev/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/site_ruby:/home/dev/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/vendor_ruby/1.9.1:/home/dev/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/vendor_ruby/1.9.1/x86_64-linux:/home/dev/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/vendor_ruby:/home/dev/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1:/home/dev/.rvm/rubies/ruby-1.9.3-p125/lib/ruby/1.9.1/x86_64-linux
-gem-path = /home/dev/.rvm/gems/ruby-1.9.3-p125@RAILS_3_2_2:/home/dev/.rvm/gems/ruby-1.9.3-p125@global
