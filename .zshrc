@@ -1,7 +1,21 @@
 ## エイリアス
 alias ls="ls -lG"
 alias ll="ls -lG"
-alias vi='vim'
+
+## Macとそれ以外の環境でaliasを分ける
+## http://news.mynavi.jp/column/zsh/022/index.html
+case "${OSTYPE}" in
+darwin*)
+	# Macの場合はMacVimを使用する
+	export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+	alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+	alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+	;;
+linux*)
+	alias vi='vim'
+	;;
+esac
+
 alias sudo='sudo '
 alias tmux='tmux -2'	# -2を付けないとVimが256にならない
 

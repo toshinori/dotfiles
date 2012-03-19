@@ -13,7 +13,7 @@ set statusline=%F%m%r%h%w\%=[TYPE=%Y]\[FORMAT=%{&ff}]\[ENC=%{&fileencoding}]\[LO
 " 行番号表示
 set number
 
-"ステータスは常に2行 
+"ステータスは常に2行
 set laststatus=2
 
 " シンタックスハイライトON
@@ -51,7 +51,7 @@ nnoremap # :<C-u>set hlsearch<Return>#"
 ""inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 " コロンセミコロン入れ変え
-noremap ; : 
+noremap ; :
 noremap : ;
 
 "スクロール時の余白を確保
@@ -80,7 +80,7 @@ colorscheme molokai
 "colorscheme zenburn
 "colorscheme dw_blue
 
-" カレント行をハイライト 
+" カレント行をハイライト
 set cursorline
 highlight CursorLine term=reverse cterm=none
 
@@ -104,7 +104,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails' 
+Bundle 'tpope/vim-rails'
 Bundle 'The-NERD-tree'
 " http//nanasi.jp/articles/vim/enhancedcommentify_vim.html
 Bundle 'EnhCommentify.vim'
@@ -183,4 +183,9 @@ nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mr
 autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
 autocmd BufNewFile *.sh 0r ~/.vim/templates/sh.tpl
 
+" 保存時に行末の空白を除去する
+autocmd BufWritePre * :%s/\s\+$//ge
+
+" ビープを消す
+set visualbell
 
