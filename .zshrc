@@ -20,6 +20,10 @@ alias sudo='sudo '
 alias tmux='tmux -2'	# -2を付けないとVimが256にならない
 
 ## rvm
+# http://d.hatena.ne.jp/hrsth/20100609/1276047000
+if [[ -e  $HOME/.rvm/scripts/rvm ]] ; then
+  source $HOME/.rvm/scripts/rvm;
+fi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 ## Rsense
@@ -32,10 +36,10 @@ bindkey -e
 ## プロンプトの設定
 autoload colors
 colors
-PROMPT="%{${fg[blue]}%}[%n@%m] %(!.#.$) %{${reset_color}%}"
-PROMPT2="%{${fg[blue]}%}%_> %{${reset_color}%}"
+PROMPT="%{${fg[green]}%}[%n@%m] %(!.#.$) %{${reset_color}%}"
+PROMPT2="%{${fg[green]}%}%_> %{${reset_color}%}"
 SPROMPT="%{${fg[red]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
-RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
+RPROMPT="%{${fg[green]}%}[%~]%{${reset_color}%}"
 
 ## 色を使う
 setopt prompt_subst
