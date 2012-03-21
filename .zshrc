@@ -1,7 +1,3 @@
-## エイリアス
-alias ls="ls -lG"
-alias ll="ls -lG"
-
 ## Macとそれ以外の環境でaliasを分ける
 ## http://news.mynavi.jp/column/zsh/022/index.html
 case "${OSTYPE}" in
@@ -10,9 +6,13 @@ darwin*)
 	export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 	alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 	alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+        alias ls="ls -lG"
+        alias ll="ls -lG"
 	;;
 linux*)
 	alias vi='vim'
+        alias ls="ls -l --color"
+        alias ll="ls -l --color"
 	;;
 esac
 
