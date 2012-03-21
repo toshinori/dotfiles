@@ -37,6 +37,9 @@ set ignorecase
 " 検索で小文字なら大文字を無視、大文字なら無視しない設定
 set smartcase
 
+" タブをスペースに変換
+set expandtab
+
 " http://blog.appling.jp/archives/140
 " ESCキー2度押しでハイライトを消す
 nnoremap <Esc><Esc> :<C-u>set nohlsearch<Return>
@@ -105,6 +108,7 @@ Bundle 'thinca/vim-ref'
 Bundle 'thinca/vim-quickrun'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-haml'
 Bundle 'The-NERD-tree'
 " http//nanasi.jp/articles/vim/enhancedcommentify_vim.html
 Bundle 'EnhCommentify.vim'
