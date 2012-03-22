@@ -117,6 +117,7 @@ Bundle 'Markdown'
 
 " Vundleの設定終了
 filetype plugin on
+filetype indent on
 
 " neocmplcashe
 " Tabで補完
