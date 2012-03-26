@@ -18,6 +18,7 @@ esac
 
 alias sudo='sudo '
 alias tmux='tmux -2'	# -2を付けないとVimが256にならない
+alias cp='cp -r'
 
 ## rvm
 # http://d.hatena.ne.jp/hrsth/20100609/1276047000
