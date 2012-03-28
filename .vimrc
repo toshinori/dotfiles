@@ -57,6 +57,9 @@ nnoremap # :<C-u>set hlsearch<Return>#"
 noremap ; :
 noremap : ;
 
+"" カンマの後ろにスペースを付与
+inoremap , ,<Space>
+
 "スクロール時の余白を確保
 set scrolloff=5
 
@@ -110,6 +113,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-haml'
 Bundle 'The-NERD-tree'
+Bundle 'The-NERD-Commenter'
 " http//nanasi.jp/articles/vim/enhancedcommentify_vim.html
 Bundle 'EnhCommentify.vim'
 Bundle 'AutoClose'
@@ -156,6 +160,10 @@ let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
 set splitright
 
+"" NERD_commenter
+"" コメントの後ろにスペースを付与
+let NERDSpaceDelims = 1
+
 " https://github.com/Shougo/unite.vim/blob/master/doc/unite.jax
 " Unite
 " バッファ一覧
@@ -193,4 +201,12 @@ autocmd BufWritePre * :%s/\s\+$//ge
 
 " ビープを消す
 set visualbell
+
+" HTML、XML、ERBで自動でタグを閉じる
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype eruby inoremap <buffer> </ </<C-x><C-o>
+augroup END
 
