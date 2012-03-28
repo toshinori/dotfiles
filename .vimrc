@@ -118,6 +118,7 @@ Bundle 'The-NERD-Commenter'
 Bundle 'EnhCommentify.vim'
 Bundle 'AutoClose'
 Bundle 'Markdown'
+Bundle 'YankRing.vim'
 
 " Vundleの設定終了
 filetype plugin on
