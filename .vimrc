@@ -119,6 +119,7 @@ Bundle 'EnhCommentify.vim'
 Bundle 'AutoClose'
 Bundle 'Markdown'
 Bundle 'YankRing.vim'
+Bundle 'glidenote/memolist.vim'
 
 " Vundleの設定終了
 filetype plugin on
@@ -164,6 +165,9 @@ set splitright
 "" NERD_commenter
 "" コメントの後ろにスペースを付与
 let NERDSpaceDelims = 1
+
+" YankRing
+let g:yankring_manual_clipboard_check = 0
 
 " https://github.com/Shougo/unite.vim/blob/master/doc/unite.jax
 " Unite
