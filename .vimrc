@@ -40,6 +40,19 @@ set smartcase
 " タブをスペースに変換
 set expandtab
 
+" スワップファイルを作らない
+set noswapfile
+
+" カーソルを行頭、行末で止まらないようにする
+" 動作してない？
+set whichwrap=b,s,h,l,<,>,[,]
+
+" 編集中でも他のファイルを開けるようにする
+set hidden
+
+" 他で変更されたら自動で読み込む
+set autoread
+
 " http://blog.appling.jp/archives/140
 " ESCキー2度押しでハイライトを消す
 nnoremap <Esc><Esc> :<C-u>set nohlsearch<Return>
@@ -106,20 +119,39 @@ Bundle 'Shougo/neocomplcache'
 " 実行してproc.soを生成する必要がある
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimproc'
+
+" バッファなども扱えるファイラ的なの
 Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
+
+" 編集中のファイルを実行
 Bundle 'thinca/vim-quickrun'
+
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-haml'
+
+" vim-railsでプロジェクト表示など
 Bundle 'The-NERD-tree'
+
+" コメント切替
 Bundle 'The-NERD-Commenter'
 " http//nanasi.jp/articles/vim/enhancedcommentify_vim.html
 Bundle 'EnhCommentify.vim'
+"
+" 自動で括弧を閉じる
 Bundle 'AutoClose'
+
 Bundle 'Markdown'
+
+" Yankの履歴をたどれるようにする
 Bundle 'YankRing.vim'
+
+" メモ取り
 Bundle 'glidenote/memolist.vim'
+
+" == などの入力補助
+Bundle 'smartchr'
 
 " Vundleの設定終了
 filetype plugin on
@@ -167,6 +199,7 @@ set splitright
 let NERDSpaceDelims = 1
 
 " YankRing
+" これを設定しないとペーストしたときに落ちる
 let g:yankring_manual_clipboard_check = 0
 
 " https://github.com/Shougo/unite.vim/blob/master/doc/unite.jax
@@ -196,6 +229,10 @@ nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+" smartchr
+" =の両端にスペースを入れる
+inoremap <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 
 " 新規作成時のテンプレートの設定
 autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl

@@ -10,7 +10,8 @@ darwin*)
         alias ll="ls -lG"
 	;;
 linux*)
-	alias vi='vim'
+	alias vi='/usr/local/vim/bin/vim'
+	alias vim='/usr/local/vim/bin/vim'
         alias ls="ls -l --color"
         alias ll="ls -l --color"
 	;;
@@ -20,6 +21,9 @@ alias sudo='sudo '
 alias tmux='tmux -2'	# -2を付けないとVimが256にならない
 alias cp='cp -r'
 
+## Rsense
+export RSENSE_HOME=/opt/rsense-0.3
+
 ## rvm
 # http://d.hatena.ne.jp/hrsth/20100609/1276047000
 if [[ -e  $HOME/.rvm/scripts/rvm ]] ; then
@@ -27,8 +31,6 @@ if [[ -e  $HOME/.rvm/scripts/rvm ]] ; then
 fi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-## Rsense
-export RSENSE_HOME=/opt/rsense-0.3
 
 ## emacs風キーバインド
 bindkey -e
