@@ -45,13 +45,16 @@ set noswapfile
 
 " カーソルを行頭、行末で止まらないようにする
 " 動作してない？
-set whichwrap=b,s,h,l,<,>,[,]
+"set whichwrap=b,s,h,l,<,>,[,]
 
 " 編集中でも他のファイルを開けるようにする
 set hidden
 
 " 他で変更されたら自動で読み込む
 set autoread
+
+" BSが効かない場合の対処
+set backspace=indent,eol,start
 
 " http://blog.appling.jp/archives/140
 " ESCキー2度押しでハイライトを消す
@@ -231,8 +234,9 @@ nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 " smartchr
-" =の両端にスペースを入れる
-inoremap <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
+" rubyの時だけ=の両端にスペースを入れる
+"inoremap <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
+autocmd FileType ruby inoremap <buffer><expr> -> smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 
 " 新規作成時のテンプレートの設定
 autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
@@ -249,6 +253,8 @@ augroup MyXML
   autocmd!
   autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-  autocmd Filetype eruby inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype ERUBY inoremap <buffer> </ </<C-x><C-o>
 augroup END
+
+
 
