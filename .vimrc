@@ -1,5 +1,6 @@
 " バックアップを作成しない
 set nobackup
+
 " 文字コードを UTF-8 に設定
 set encoding=utf-8
 
@@ -45,7 +46,7 @@ set noswapfile
 
 " カーソルを行頭、行末で止まらないようにする
 " 動作してない？
-"set whichwrap=b,s,h,l,<,>,[,]
+set whichwrap=b,s,h,l,<,>,[,]
 
 " 編集中でも他のファイルを開けるようにする
 set hidden
@@ -56,42 +57,22 @@ set autoread
 " BSが効かない場合の対処
 set backspace=indent,eol,start
 
-" http://blog.appling.jp/archives/140
-" ESCキー2度押しでハイライトを消す
-nnoremap <Esc><Esc> :<C-u>set nohlsearch<Return>
-nnoremap / :<C-u>set hlsearch<Return>/
-nnoremap ? :<C-u>set hlsearch<Return>?
-nnoremap * :<C-u>set hlsearch<Return>*
-nnoremap # :<C-u>set hlsearch<Return>#"
-
-""set noimdisable
-""set iminsert=0 imsearch=0
-""set noimcmdline
-""inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-
-" コロンセミコロン入れ変え
-noremap ; :
-noremap : ;
-
-"" カンマの後ろにスペースを付与
-inoremap , ,<Space>
-
 "スクロール時の余白を確保
 set scrolloff=5
 
-" 自動でカッコを閉じる
-" AutoCloseに移行
-" http://d.hatena.ne.jp/spiritloose/20061113/1163401194　
-"inoremap { {}<LEFT>
-"inoremap [ []<LEFT>
-"inoremap ( ()<LEFT>
-"inoremap " ""<LEFT>
-"inoremap ' ''<LEFT>
-"vnoremap { "zdi^V{<C-R>z}<ESC>
-"vnoremap [ "zdi^V[<C-R>z]<ESC>
-"vnoremap ( "zdi^V(<C-R>z)<ESC>
-"vnoremap " "zdi^V"<C-R>z^V"<ESC>
-"vnoremap ' "zdi'<C-R>z'<ESC>
+" ビープを消す
+set visualbell
+
+" カレント行をハイライト
+set cursorline
+highlight CursorLine term=reverse cterm=none
+
+" 新規作成時のテンプレートの設定
+autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
+autocmd BufNewFile *.sh 0r ~/.vim/templates/sh.tpl
+
+" 保存時に行末の空白を除去する
+autocmd BufWritePre * :%s/\s\+$//ge
 
 " 色を変更
 " http://d.hatena.ne.jp/kattton/20110425/1303746056
@@ -102,9 +83,37 @@ colorscheme molokai
 "colorscheme zenburn
 "colorscheme dw_blue
 
-" カレント行をハイライト
-set cursorline
-highlight CursorLine term=reverse cterm=none
+"" キーマップ関連
+" http://blog.appling.jp/archives/140
+" ESCキー2度押しでハイライトを消す
+nnoremap <Esc><Esc> :<C-u>set nohlsearch<Return>
+nnoremap / :<C-u>set hlsearch<Return>/
+nnoremap ? :<C-u>set hlsearch<Return>?
+nnoremap * :<C-u>set hlsearch<Return>*
+nnoremap # :<C-u>set hlsearch<Return>#"
+
+" コロンセミコロン入れ変え
+noremap ; :
+noremap : ;
+
+"" カンマの後ろにスペースを付与
+inoremap , ,<Space>
+
+"" 0で行頭、9で行末
+nmap 0 ^
+nmap 9 $
+
+"" innsert mode での移動
+inoremap  <C-e> <END>
+inoremap  <C-a> <HOME>
+" インサートモードでもhjklで移動（Ctrl押すけどね）
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+"" ビジュアルモードで選択した内容を検索
+vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
 " Vundleの設定開始
 " http://vim-users.jp/2011/04/hack215/
@@ -205,13 +214,6 @@ let NERDSpaceDelims = 1
 " これを設定しないとペーストしたときに落ちる
 let g:yankring_manual_clipboard_check = 0
 
-" https://github.com/Shougo/unite.vim/blob/master/doc/unite.jax
-" Unite
-" バッファ一覧
-"nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" ファイル一覧
-"noremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-
 " Unite
 " http://d.hatena.ne.jp/ruedap/20110117/vim_unite_plugin_1_wee
 let g:unite_enable_start_insert = 1
@@ -236,17 +238,7 @@ nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mr
 " smartchr
 " rubyの時だけ=の両端にスペースを入れる
 "inoremap <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
-autocmd FileType ruby inoremap <buffer><expr> -> smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
-
-" 新規作成時のテンプレートの設定
-autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
-autocmd BufNewFile *.sh 0r ~/.vim/templates/sh.tpl
-
-" 保存時に行末の空白を除去する
-autocmd BufWritePre * :%s/\s\+$//ge
-
-" ビープを消す
-set visualbell
+autocmd FileType RUBY inoremap <buffer><expr> -> smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 
 " HTML、XML、ERBで自動でタグを閉じる
 augroup MyXML
