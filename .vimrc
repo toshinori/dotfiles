@@ -99,6 +99,9 @@ noremap : ;
 "" カンマの後ろにスペースを付与
 inoremap , ,<Space>
 
+"" #の後ろにスペースを付与
+inoremap # #<Space>
+
 "" 0で行頭、9で行末
 nmap 0 ^
 nmap 9 $
@@ -106,7 +109,7 @@ nmap 9 $
 "" innsert mode での移動
 inoremap  <C-e> <END>
 inoremap  <C-a> <HOME>
-" インサートモードでもhjklで移動（Ctrl押すけどね）
+" インサートモードでもhjklで移動
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-h> <Left>
@@ -139,6 +142,7 @@ Bundle 'thinca/vim-ref'
 " 編集中のファイルを実行
 Bundle 'thinca/vim-quickrun'
 
+" Ruby関連
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-haml'
@@ -150,10 +154,11 @@ Bundle 'The-NERD-tree'
 Bundle 'The-NERD-Commenter'
 " http//nanasi.jp/articles/vim/enhancedcommentify_vim.html
 Bundle 'EnhCommentify.vim'
-"
+
 " 自動で括弧を閉じる
 Bundle 'AutoClose'
 
+" マークダウンを色付け
 Bundle 'Markdown'
 
 " Yankの履歴をたどれるようにする
@@ -237,7 +242,6 @@ nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mr
 
 " smartchr
 " rubyの時だけ=の両端にスペースを入れる
-"inoremap <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 autocmd FileType RUBY inoremap <buffer><expr> -> smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 
 " HTML、XML、ERBで自動でタグを閉じる
