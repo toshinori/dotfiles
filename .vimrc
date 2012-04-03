@@ -100,11 +100,14 @@ noremap : ;
 inoremap , ,<Space>
 
 "" #の後ろにスペースを付与
-inoremap # #<Space>
+autocmd FileType RUBY inoremap # #<Space>
 
 "" 0で行頭、9で行末
 nmap 0 ^
 nmap 9 $
+
+vnoremap 0 ^
+vnoremap 9 $
 
 "" innsert mode での移動
 inoremap  <C-e> <END>
@@ -153,7 +156,6 @@ Bundle 'The-NERD-tree'
 " コメント切替
 Bundle 'The-NERD-Commenter'
 " http//nanasi.jp/articles/vim/enhancedcommentify_vim.html
-Bundle 'EnhCommentify.vim'
 
 " 自動で括弧を閉じる
 Bundle 'AutoClose'
@@ -202,7 +204,7 @@ endif
 let g:rsenseUseOmniFunc = 1
 if filereadable(expand('/opt/rsense-0.3/bin/rsense'))
 	let g:rsenseHome = expand('/opt/rsense-0.3')
-	let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+  let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 endif
 
 " quickrun
@@ -211,9 +213,11 @@ let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
 set splitright
 
-"" NERD_commenter
-"" コメントの後ろにスペースを付与
+" NERD_commenter
+" コメントの後ろにスペースを付与
 let NERDSpaceDelims = 1
+nmap ,, <Plug>NERDCommenterToggle
+vmap ,, <Plug>NERDCommenterToggle
 
 " YankRing
 " これを設定しないとペーストしたときに落ちる
