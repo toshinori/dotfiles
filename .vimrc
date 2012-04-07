@@ -172,6 +172,9 @@ Bundle 'glidenote/memolist.vim'
 " == などの入力補助
 Bundle 'smartchr'
 
+" 単語単位の移動をいい感じにする
+Bundle 'smartword'
+
 " Vundleの設定終了
 filetype plugin on
 filetype indent on
@@ -256,5 +259,15 @@ augroup MyXML
   autocmd Filetype ERUBY inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-
+" smartword
+if exists('g:loaded_smartword')
+  map w <Plug>(smartword-w)
+  map b <Plug>(smartword-b)
+  map e <Plug>(smartword-e)
+  map ge <Plug>(smartword-ge)
+  noremap W w
+  noremap B b
+  noremap E e
+  noremap gE ge
+endif
 
