@@ -143,7 +143,8 @@ Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
 
 " 編集中のファイルを実行
-Bundle 'thinca/vim-quickrun'
+""Bundle 'thinca/vim-quickrun'
+Bundle 'git://github.com/tokorom/vim-quickrun.git'
 
 " Ruby関連
 Bundle 'vim-ruby/vim-ruby'
@@ -212,9 +213,21 @@ endif
 
 " quickrun
 " 実行結果を下、または右に表示する
+let g:quickrun_config = {}
 let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
 set splitright
+""set g:quickrun_config={}
+
+" rspec用quickrun
+""let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': '-c --format progress -I .', 'exec': ['bundle exec %c %o %s %a'], 'output_filetype': 'rspec-result'}
+let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': '', 'output_filetype': 'rspec-result'}
+
+""let g:quickrun_config['ruby.rspec'] = {'command': 'rspec'}
+augroup UjihisaRSpec
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END
 
 " NERD_commenter
 " コメントの後ろにスペースを付与
