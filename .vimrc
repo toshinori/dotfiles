@@ -245,7 +245,7 @@ let g:yankring_manual_clipboard_check = 0
 
 " Unite
 " http://d.hatena.ne.jp/ruedap/20110117/vim_unite_plugin_1_wee
-" let g:unite_enable_start_insert = 1
+let g:unite_enable_start_insert = 1
 
 " インサート／ノーマルどちらからでも呼び出せるようにキーマップ
 nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
@@ -278,10 +278,11 @@ augroup MyXML
 augroup END
 
 " vim-atlr
-" call altr#define('app/models/%.rb', 'test/unit/%.rb')
-" call altr#define('app/controllers/%.rb', 'test/functional/*.rb')
-" call altr#define('app/helpers/%.rb', 'spec/helpers/%.rb')
-" call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
+nmap gr <Plug>(altr-forward)
+call altr#define('app/models/%.rb', 'spec/models/%_spec.rb')
+call altr#define('app/controllers/%.rb', 'spece/controllers/%_spec.rb')
+call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
+call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 
 " smartword
 if exists('g:loaded_smartword')
