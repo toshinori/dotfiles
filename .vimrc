@@ -176,6 +176,9 @@ Bundle 'smartchr'
 " 単語単位の移動をいい感じにする
 Bundle 'smartword'
 
+" 関連するファイルを開く
+Bundle 'git://github.com/kana/vim-altr.git'
+
 " Vundleの設定終了
 filetype plugin on
 filetype indent on
@@ -232,6 +235,7 @@ augroup END
 " NERD_commenter
 " コメントの後ろにスペースを付与
 let NERDSpaceDelims = 1
+" ,, でコメント切替
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
 
@@ -241,7 +245,7 @@ let g:yankring_manual_clipboard_check = 0
 
 " Unite
 " http://d.hatena.ne.jp/ruedap/20110117/vim_unite_plugin_1_wee
-let g:unite_enable_start_insert = 1
+" let g:unite_enable_start_insert = 1
 
 " インサート／ノーマルどちらからでも呼び出せるようにキーマップ
 nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
@@ -262,7 +266,8 @@ nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mr
 
 " smartchr
 " rubyの時だけ=の両端にスペースを入れる
-autocmd FileType RUBY inoremap <buffer><expr> -> smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
+" autocmd FileType RUBY inoremap <buffer><expr> -> smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
+inoremap <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 
 " HTML、XML、ERBで自動でタグを閉じる
 augroup MyXML
@@ -271,6 +276,12 @@ augroup MyXML
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
   autocmd Filetype ERUBY inoremap <buffer> </ </<C-x><C-o>
 augroup END
+
+" vim-atlr
+" call altr#define('app/models/%.rb', 'test/unit/%.rb')
+" call altr#define('app/controllers/%.rb', 'test/functional/*.rb')
+" call altr#define('app/helpers/%.rb', 'spec/helpers/%.rb')
+" call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 
 " smartword
 if exists('g:loaded_smartword')
