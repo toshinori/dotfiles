@@ -179,6 +179,12 @@ Bundle 'smartword'
 " 関連するファイルを開く
 Bundle 'git://github.com/kana/vim-altr.git'
 
+" 対応するカッコの表示を強化
+Bundle 'matchit.zip'
+
+" Rubyのリファクタリング
+Bundle 'git://github.com/ecomba/vim-ruby-refactoring.git'
+
 " Vundleの設定終了
 filetype plugin on
 filetype indent on
@@ -285,14 +291,17 @@ call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
 call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 
 " smartword
-if exists('g:loaded_smartword')
-  map w <Plug>(smartword-w)
-  map b <Plug>(smartword-b)
-  map e <Plug>(smartword-e)
-  map ge <Plug>(smartword-ge)
-  noremap W w
-  noremap B b
-  noremap E e
-  noremap gE ge
-endif
+" if exists('g:loaded_smartword')
+  " map w <Plug>(smartword-w)
+  " map b <Plug>(smartword-b)
+  " map e <Plug>(smartword-e)
+  " map ge <Plug>(smartword-ge)
+  " noremap W w
+  " noremap B b
+  " noremap E e
+  " noremap gE ge
+" endif
+
+" ruby_refactoring
+let g:ruby_refactoring_map_keys = 1
 

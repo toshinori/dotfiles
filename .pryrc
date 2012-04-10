@@ -1,3 +1,6 @@
+# pとかの代わり、apで見やすい形式で出力される
+require 'awesome_print'
+
 # http://labs.timedia.co.jp/2011/12/rubyist-should-use-pry.html
 # シェルコマンドのprifix
 Pry.config.command_prefix = "%"
