@@ -96,13 +96,13 @@ nnoremap # :<C-u>set hlsearch<Return>#"
 noremap ; :
 noremap : ;
 
-"" カンマの後ろにスペースを付与
+" カンマの後ろにスペースを付与
 inoremap , ,<Space>
 
-"" #の後ろにスペースを付与
+" #の後ろにスペースを付与
 autocmd FileType RUBY inoremap # #<Space>
 
-"" 0で行頭、9で行末
+" 0で行頭、9で行末
 nmap 0 ^
 nmap 9 $
 
@@ -160,7 +160,7 @@ Bundle 'The-NERD-Commenter'
 
 " 自動で括弧を閉じる
 Bundle 'AutoClose'
-
+Bundle 'git://github.com/Townk/vim-autoclose.git'
 " マークダウンを色付け
 Bundle 'Markdown'
 
@@ -304,4 +304,8 @@ call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 
 " ruby_refactoring
 let g:ruby_refactoring_map_keys = 1
+
+" vim-autoclose
+let g:autoclose_on = 1
+let g:AutoClosePairs_add  =  "|"
 
