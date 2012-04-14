@@ -113,10 +113,10 @@ vnoremap 9 $
 inoremap  <C-e> <END>
 inoremap  <C-a> <HOME>
 " インサートモードでもhjklで移動
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+" inoremap <C-j> <Down>
+" inoremap <C-k> <Up>
+" inoremap <C-h> <Left>
+" inoremap <C-l> <Right>
 
 "" ビジュアルモードで選択した内容を検索
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
@@ -132,6 +132,8 @@ call vundle#rc()
 
 " http://vim-users.jp/2011/04/hack215/
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
+
 " vimshellを使うにはvimprocが必要
 " またvimprocは~/.vim/bundle/vimproc/make -f make_gcc.makeを
 " 実行してproc.soを生成する必要がある
@@ -220,6 +222,10 @@ if filereadable(expand('/opt/rsense-0.3/bin/rsense'))
   let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 endif
 
+let g:neocomplcache_snippets_dir = '~/.vim/snipetts/'
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+
 " quickrun
 " 実行結果を下、または右に表示する
 let g:quickrun_config = {}
@@ -233,10 +239,10 @@ set splitright
 let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': '', 'output_filetype': 'rspec-result'}
 
 ""let g:quickrun_config['ruby.rspec'] = {'command': 'rspec'}
-augroup UjihisaRSpec
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
-augroup END
+" augroup RSpec
+  " autocmd!
+  " autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+" augroup END
 
 " NERD_commenter
 " コメントの後ろにスペースを付与
