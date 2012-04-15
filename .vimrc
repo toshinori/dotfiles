@@ -66,6 +66,9 @@ set visualbell
 " 折りたたみON
 set foldmethod=syntax
 
+" yankしたらクリップボードにコピー
+set clipboard+=autoselect
+
 " カレント行をハイライト
 set cursorline
 highlight CursorLine term=reverse cterm=none
