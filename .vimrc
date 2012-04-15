@@ -63,6 +63,9 @@ set scrolloff=5
 " ビープを消す
 set visualbell
 
+" 折りたたみON
+set foldmethod=syntax
+
 " カレント行をハイライト
 set cursorline
 highlight CursorLine term=reverse cterm=none
@@ -133,6 +136,8 @@ call vundle#rc()
 " http://vim-users.jp/2011/04/hack215/
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neocomplcache-snippets-complete'
+" 英語を補完
+Bundle 'neco-look'
 
 " vimshellを使うにはvimprocが必要
 " またvimprocは~/.vim/bundle/vimproc/make -f make_gcc.makeを
@@ -152,6 +157,7 @@ Bundle 'git://github.com/tokorom/vim-quickrun.git'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-haml'
+Bundle 'bundler'
 
 " vim-railsでプロジェクト表示など
 Bundle 'The-NERD-tree'
@@ -222,6 +228,7 @@ if filereadable(expand('/opt/rsense-0.3/bin/rsense'))
   let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 endif
 
+" スニペット
 let g:neocomplcache_snippets_dir = '~/.vim/snipetts/'
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
