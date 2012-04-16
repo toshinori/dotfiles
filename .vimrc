@@ -64,7 +64,7 @@ set scrolloff=5
 set visualbell
 
 " 折りたたみON
-set foldmethod=syntax
+" set foldmethod=syntax
 
 " yankしたらクリップボードにコピー
 set clipboard+=autoselect
@@ -302,7 +302,7 @@ augroup END
 " vim-atlr
 nmap gr <Plug>(altr-forward)
 call altr#define('app/models/%.rb', 'spec/models/%_spec.rb')
-call altr#define('app/controllers/%.rb', 'spece/controllers/%_spec.rb')
+call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
 call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
 call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 
