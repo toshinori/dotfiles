@@ -31,7 +31,6 @@ abbr        it {}
 prev_word   '^'
     it { ${1:expression} }
 
-
 snippet     itl
 abbr        it { ->{} }
 prev_word   '^'
@@ -72,10 +71,24 @@ snippet     shon
 abbr        should_not
     should_not be_${1:value}
 
-snippet     facb
-abbr        FactoryGirl.build(:name)
-    FactoryGirl.build(${1:name})
+snippet     asse
+abbr        assert_select tag
+prev_word   '^'
+    assert_select '${1:tag}'${2:,text:}
 
-snippet     facc
-abbr        FactoryGirl.create(:name)
-    FactoryGirl.create(${1:name})
+snippet     assi
+abbr        assign(:name, value)
+prev_word   '^'
+    assign(:${1:name}, ${2:value})
+
+snippet     er
+abbr        <% %>
+    <% ${1:code} %>
+
+snippet     erb
+abbr        <%= %>
+    <%= ${1:output} %>
+
+snippet     reg
+abbr        %r()
+    %r(${1:reg})${2:i}
