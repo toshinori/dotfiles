@@ -115,7 +115,7 @@ nmap 9 $
 vnoremap 0 ^
 vnoremap 9 $
 
-"" innsert mode での移動
+" innsert mode での移動
 inoremap  <C-e> <END>
 inoremap  <C-a> <HOME>
 " インサートモードでもhjklで移動
@@ -124,7 +124,7 @@ inoremap  <C-a> <HOME>
 " inoremap <C-h> <Left>
 " inoremap <C-l> <Right>
 
-"" ビジュアルモードで選択した内容を検索
+" ビジュアルモードで選択した内容を検索
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
 " Vundleの設定開始
@@ -288,7 +288,6 @@ nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mr
 
 " smartchr
 " rubyの時だけ=の両端にスペースを入れる
-" autocmd FileType RUBY inoremap <buffer><expr> -> smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 inoremap <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 
 " HTML、XML、ERBで自動でタグを閉じる
@@ -325,3 +324,8 @@ let g:ruby_refactoring_map_keys = 1
 let g:autoclose_on = 1
 let g:AutoClosePairs_add  =  "|"
 
+noremap <Leader>t :vimgrep /TODO/j **/*.rb **/*.js **/*.erb
+autocmd QuickfixCmdPost vimgrep cw
+
+noremap <CR> o<ESC>
+noremap <S-CR> O<ESC>

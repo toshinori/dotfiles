@@ -34,7 +34,7 @@ prev_word   '^'
 snippet     itl
 abbr        it { ->{} }
 prev_word   '^'
-    it { ->{ ${1:lambda} } }.should ${2:change}
+    it { ->{ ${1:lambda} }.should ${2:change} }
 
 snippet     its
 abbr        its(:hoge) {}
@@ -50,6 +50,26 @@ snippet     let!
 abbr        let!(:hoge) {}
 prev_word   '^'
     let!(:${1:name}) { ${2:expression} }
+
+snippet     blon
+abbr        belong_to(:hoge)
+prev_word   '^'
+    it { should belong_to(:${1:assosiation}) }
+
+snippet     haveo
+abbr        have_one(:hoge)
+prev_word   '^'
+    it { should have_one(:${1:assosiation}) }
+
+snippet     havemt
+abbr        have_many(:hoge).through(:fuga)
+prev_word   '^'
+    it { should have_many(:${1:assosiation}).through(:${2:through}) }
+
+snippet     havem
+abbr        have_many(:hoge)
+prev_word   '^'
+    it { should have_many(:${1:assosiation}) }
 
 snippet     cha
 abbr        change(Hoge, :fuga)
@@ -109,3 +129,8 @@ abbr        FactoryGirl.build(:name)
 snippet     facc
 abbr        FactoryGirl.create(:name)
     FactoryGirl.create(${1:name})
+
+snippet     todo
+abbr        #TODO
+prev_word   '^'
+  #TODO ${1:TODO}
