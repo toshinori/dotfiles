@@ -268,6 +268,11 @@ let g:yankring_manual_clipboard_check = 0
 " Unite
 " http://d.hatena.ne.jp/ruedap/20110117/vim_unite_plugin_1_wee
 let g:unite_enable_start_insert = 1
+" http://d.hatena.ne.jp/basyura/20100622/p1
+" 先頭候補を自動で選択
+" let g:neocomplcache_enable_auto_select  =  1
+" Enterキー押下時、候補選択中だったら選択確定、そうでなければ改行
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 
 " インサート／ノーマルどちらからでも呼び出せるようにキーマップ
 nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
