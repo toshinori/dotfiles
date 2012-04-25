@@ -196,6 +196,12 @@ Bundle 'matchit.zip'
 " Rubyのリファクタリング
 Bundle 'git://github.com/ecomba/vim-ruby-refactoring.git'
 
+" XMLRPCなどを実行する
+Bundle 'mattn/webapi-vim'
+
+" DBを操作
+Bundle 'mattn/vdbi-vim'
+
 " Vundleの設定終了
 filetype plugin on
 filetype indent on
