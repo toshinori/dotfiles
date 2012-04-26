@@ -205,6 +205,10 @@ Bundle 'mattn/vdbi-vim'
 " gitを操作
 Bundle 'git://github.com/tpope/vim-fugitive.git'
 
+" coffee-script
+" Bundle 'git://github.com/kchmck/vim-coffee-script.git'
+" Bundle 'kchmck/vim-coffee-script'
+
 " Vundleの設定終了
 filetype plugin on
 filetype indent on
