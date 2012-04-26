@@ -202,6 +202,9 @@ Bundle 'mattn/webapi-vim'
 " DBを操作
 Bundle 'mattn/vdbi-vim'
 
+" gitを操作
+Bundle 'git://github.com/tpope/vim-fugitive.git'
+
 " Vundleの設定終了
 filetype plugin on
 filetype indent on
