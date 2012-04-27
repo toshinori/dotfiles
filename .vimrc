@@ -1,4 +1,5 @@
 " バックアップを作成しない
+"
 set nobackup
 
 " 文字コードを UTF-8 に設定
@@ -207,7 +208,10 @@ Bundle 'git://github.com/tpope/vim-fugitive.git'
 
 " coffee-script
 " Bundle 'git://github.com/kchmck/vim-coffee-script.git'
-" Bundle 'kchmck/vim-coffee-script'
+Bundle 'kchmck/vim-coffee-script'
+
+" less
+Bundle 'git://github.com/groenewege/vim-less.git'
 
 " Vundleの設定終了
 filetype plugin on
@@ -357,3 +361,4 @@ autocmd QuickfixCmdPost vimgrep cw
 
 noremap <CR> o<ESC>
 noremap <S-CR> O<ESC>
+
