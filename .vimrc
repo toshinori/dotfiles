@@ -106,8 +106,6 @@ noremap : ;
 " カンマの後ろにスペースを付与
 inoremap , ,<Space>
 
-" #の後ろにスペースを付与
-autocmd FileType RUBY inoremap # #<Space>
 
 " 0で行頭、9で行末
 nmap 0 ^
@@ -127,6 +125,10 @@ inoremap  <C-a> <HOME>
 
 " ビジュアルモードで選択した内容を検索
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
+
+" 折りたたみ
+set foldmethod=syntax
+set foldlevel=100
 
 " Vundleの設定開始
 " http://vim-users.jp/2011/04/hack215/
@@ -244,8 +246,8 @@ if !exists('g:neocomplcache_omni_patterns')
 endif
 let g:rsenseUseOmniFunc = 1
 if filereadable(expand('/opt/rsense-0.3/bin/rsense'))
-	let g:rsenseHome = expand('/opt/rsense-0.3')
-  let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+        let g:rsenseHome = expand('/opt/rsense-0.3')
+        let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 endif
 
 " スニペット
@@ -311,23 +313,27 @@ nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mr
 " http://d.hatena.ne.jp/ruedap/20110117/vim_unite_plugin_1_week
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
-  " 単語単位からパス単位で削除するように変更
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  " ESCキーを2回押すと終了する
-  nmap <silent><buffer> <ESC><ESC> q
-  imap <silent><buffer> <ESC><ESC> <ESC>q
+        " 単語単位からパス単位で削除するように変更
+        imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+        " ESCキーを2回押すと終了する
+        nmap <silent><buffer> <ESC><ESC> q
+        imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
 
 " smartchr
-" rubyの時だけ=の両端にスペースを入れる
-inoremap <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
+autocmd FileType ruby inoremap <buffer> <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
+autocmd FileType ruby inoremap <buffer> <expr> + smartchr#one_of(' + ',  '+')
+autocmd FileType ruby inoremap <buffer> <expr> - smartchr#one_of(' - ',  '-')
+autocmd FileType ruby inoremap <buffer> <expr> # smartchr#one_of('# ',  '#{', '#')
+
+" autocmd FileType RUBY inoremap # #<Space>
 
 " HTML、XML、ERBで自動でタグを閉じる
 augroup MyXML
-  autocmd!
-  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-  autocmd Filetype ERUBY inoremap <buffer> </ </<C-x><C-o>
+        autocmd!
+        autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+        autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+        autocmd Filetype ERUBY inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
 " vim-atlr
@@ -350,11 +356,11 @@ call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 " endif
 
 " ruby_refactoring
-let g:ruby_refactoring_map_keys = 1
+" let g:ruby_refactoring_map_keys = 1
 
 " vim-autoclose
 let g:autoclose_on = 1
-let g:AutoClosePairs_add  =  "|"
+let g:AutoClosePairs_add = "|"
 
 noremap <Leader>t :vimgrep /TODO/j **/*.rb **/*.js **/*.erb
 autocmd QuickfixCmdPost vimgrep cw
