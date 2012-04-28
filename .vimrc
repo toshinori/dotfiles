@@ -1,5 +1,4 @@
 " バックアップを作成しない
-"
 set nobackup
 
 " 文字コードを UTF-8 に設定
@@ -59,7 +58,7 @@ set autoread
 set backspace=indent,eol,start
 
 "スクロール時の余白を確保
-set scrolloff=5
+set scrolloff=8
 
 " ビープを消す
 set visualbell
@@ -73,6 +72,8 @@ set clipboard+=autoselect
 " カレント行をハイライト
 set cursorline
 highlight CursorLine term=reverse cterm=none
+
+set tabstop=2
 
 " 新規作成時のテンプレートの設定
 autocmd BufNewFile *.rb 0r ~/.vim/templates/rb.tpl
@@ -214,6 +215,12 @@ Bundle 'kchmck/vim-coffee-script'
 
 " less
 Bundle 'git://github.com/groenewege/vim-less.git'
+
+" zendocing
+Bundle 'ZenCoding.vim'
+
+" 複数プロセス間でのyankをできるようにする
+Bundle 'yanktmp.vim'
 
 " Vundleの設定終了
 filetype plugin on
@@ -368,3 +375,16 @@ autocmd QuickfixCmdPost vimgrep cw
 noremap <CR> o<ESC>
 noremap <S-CR> O<ESC>
 
+" yanktmp
+map <silent> sy :call YanktmpYank()<CR>
+map <silent> sp :call YanktmpPaste_p()<CR>
+map <silent> sP :call YanktmpPaste_P()<CR>
+
+" fugitive
+nnoremap <Space>gd :<C-u>Gdiff<Enter>
+nnoremap <Space>gs :<C-u>Gstatus<Enter>
+nnoremap <Space>gl :<C-u>Glog<Enter>
+nnoremap <Space>ga :<C-u>Gwrite<Enter>
+nnoremap <Space>gc :<C-u>Gcommit<Enter>
+nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
+nnoremap <Space>gb :<C-u>Gblame<Enter>
