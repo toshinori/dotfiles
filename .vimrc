@@ -85,7 +85,7 @@ autocmd BufWritePre * :%s/\s\+$//ge
 " 色を変更
 " http://d.hatena.ne.jp/kattton/20110425/1303746056
 " tmuxを使う場合はオフにしないと色がでない
-"set t_Co=256
+set t_Co=256
 "colorscheme desert
 colorscheme molokai
 "colorscheme zenburn
@@ -221,6 +221,10 @@ Bundle 'ZenCoding.vim'
 
 " 複数プロセス間でのyankをできるようにする
 Bundle 'yanktmp.vim'
+
+" cssで色を表示
+" 要設定
+" Bundle 'css_color.vim'
 
 " Vundleの設定終了
 filetype plugin on
@@ -388,3 +392,14 @@ nnoremap <Space>ga :<C-u>Gwrite<Enter>
 nnoremap <Space>gc :<C-u>Gcommit<Enter>
 nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Space>gb :<C-u>Gblame<Enter>
+
+" 行末にセミコロンを入れる設定だけどいまいち
+" function! IsEndSemicolon()
+  " let c = getline(".")[col("$")-2]
+  " if c != ';'
+    " return 1
+  " else
+    " return 0
+  " endif
+" endfunction
+" inoremap <expr>;; IsEndSemicolon() ? "<C-O>$;<CR>" : "<C-O>$<CR>"
