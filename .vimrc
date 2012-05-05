@@ -403,3 +403,4 @@ nnoremap <Space>gb :<C-u>Gblame<Enter>
   " endif
 " endfunction
 " inoremap <expr>;; IsEndSemicolon() ? "<C-O>$;<CR>" : "<C-O>$<CR>"
+"
