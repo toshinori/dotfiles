@@ -144,7 +144,7 @@ call vundle#rc()
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neocomplcache-snippets-complete'
 " 英語を補完
-Bundle 'neco-look'
+"Bundle 'neco-look'
 
 " vimshellを使うにはvimprocが必要
 " またvimprocは~/.vim/bundle/vimproc/make -f make_gcc.makeを
@@ -161,7 +161,7 @@ Bundle 'thinca/vim-ref'
 Bundle 'git://github.com/tokorom/vim-quickrun.git'
 
 " Ruby関連
-Bundle 'vim-ruby/vim-ruby'
+" Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-haml'
 Bundle 'bundler'
@@ -198,7 +198,7 @@ Bundle 'git://github.com/kana/vim-altr.git'
 Bundle 'matchit.zip'
 
 " Rubyのリファクタリング
-Bundle 'git://github.com/ecomba/vim-ruby-refactoring.git'
+" Bundle 'git://github.com/ecomba/vim-ruby-refactoring.git'
 
 " XMLRPCなどを実行する
 Bundle 'mattn/webapi-vim'
@@ -230,36 +230,111 @@ Bundle 'yanktmp.vim'
 filetype plugin on
 filetype indent on
 
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_force_overwrite_completefunc = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+"let g:neocomplcache_dictionary_filetype_lists = {
+"    \ 'default' : '',
+"    \ 'vimshell' : $HOME.'/.vimshell_hist',
+"    \ 'scheme' : $HOME.'/.gosh_completions'
+"    \ }
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" AutoComplPop like behavior.
+"let g:neocomplcache_enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplcache_enable_auto_select = 1
+"let g:neocomplcache_disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
+"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
 " neocmplcashe
 " Tabで補完
 " http://d.hatena.ne.jp/famnet/20110619/install_neocmplcache_vim_plugin
-let g:neocomplcache_enable_at_startup = 1
-function InsertTabWrapper()
-		if pumvisible()
-				return "\<c-n>"
-		endif
-		let col = col('.') - 1
-		if !col || getline('.')[col - 1] !~ '\k\|<\|/'
-			return "\<tab>"
-		elseif exists('&omnifunc') && &omnifunc == ''
-			return "\<c-n>"
-		else
-			return "\<c-x>\<c-o>"
-		endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+" let g:neocomplcache_enable_at_startup = 1
+" function InsertTabWrapper()
+		" if pumvisible()
+				" return "\<c-n>"
+		" endif
+		" let col = col('.') - 1
+		" if !col || getline('.')[col - 1] !~ '\k\|<\|/'
+			" return "\<tab>"
+		" elseif exists('&omnifunc') && &omnifunc == ''
+			" return "\<c-n>"
+		" else
+			" return "\<c-x>\<c-o>"
+		" endif
+" endfunction
+" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 " RSenseでオムニ補完を使う
 " http://cx4a.org/software/rsense/index.ja.html#.E6.9C.80.E6.96.B0.E5.AE.89.E5.AE.9A.E6.9D.BF__v0.3_
-let g:rsenseHome = "/opt/rsense-0.3"
-if !exists('g:neocomplcache_omni_patterns')
-	let g:neocomplcache_omni_patterns = {}
-endif
-let g:rsenseUseOmniFunc = 1
-if filereadable(expand('/opt/rsense-0.3/bin/rsense'))
-        let g:rsenseHome = expand('/opt/rsense-0.3')
-        let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-endif
+" let g:rsenseHome = "/opt/rsense-0.3"
+" if !exists('g:neocomplcache_omni_patterns')
+	" let g:neocomplcache_omni_patterns = {}
+" endif
+" let g:rsenseUseOmniFunc = 1
+" if filereadable(expand('/opt/rsense-0.3/bin/rsense'))
+        " let g:rsenseHome = expand('/opt/rsense-0.3')
+        " let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+" endif
 
 " スニペット
 let g:neocomplcache_snippets_dir = '~/.vim/snipetts/'
@@ -276,7 +351,7 @@ set splitright
 
 " rspec用quickrun
 ""let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': '-c --format progress -I .', 'exec': ['bundle exec %c %o %s %a'], 'output_filetype': 'rspec-result'}
-let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': '', 'output_filetype': 'rspec-result'}
+" let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': '', 'output_filetype': 'rspec-result'}
 
 ""let g:quickrun_config['ruby.rspec'] = {'command': 'rspec'}
 " augroup RSpec
@@ -310,18 +385,18 @@ inoremap <silent> <C-f> <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file<CR
 nnoremap <silent> <C-b> :<C-u>Unite buffer file_mru<CR>
 inoremap <silent> <C-b> <ESC>:<C-u>Unite buffer file_mru<CR>
 
-" バッファ一覧
+"" バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" ファイル一覧
+"" ファイル一覧
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" レジスタ一覧
+"" レジスタ一覧
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-" 最近使用したファイル一覧
+"" 最近使用したファイル一覧
 nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
-" 全部乗せ
+"" 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-
-" http://d.hatena.ne.jp/ruedap/20110117/vim_unite_plugin_1_week
+"
+"" http://d.hatena.ne.jp/ruedap/20110117/vim_unite_plugin_1_week
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
         " 単語単位からパス単位で削除するように変更
@@ -354,21 +429,21 @@ call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
 call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
 call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 
-" smartword
-" if exists('g:loaded_smartword')
-  " map w <Plug>(smartword-w)
-  " map b <Plug>(smartword-b)
-  " map e <Plug>(smartword-e)
-  " map ge <Plug>(smartword-ge)
-  " noremap W w
-  " noremap B b
-  " noremap E e
-  " noremap gE ge
-" endif
-
-" ruby_refactoring
-" let g:ruby_refactoring_map_keys = 1
-
+"" smartword
+"" if exists('g:loaded_smartword')
+"  " map w <Plug>(smartword-w)
+"  " map b <Plug>(smartword-b)
+"  " map e <Plug>(smartword-e)
+"  " map ge <Plug>(smartword-ge)
+"  " noremap W w
+"  " noremap B b
+"  " noremap E e
+"  " noremap gE ge
+"" endif
+"
+"" ruby_refactoring
+"" let g:ruby_refactoring_map_keys = 1
+"
 " vim-autoclose
 let g:autoclose_on = 1
 let g:AutoClosePairs_add = "|"
@@ -393,14 +468,14 @@ nnoremap <Space>gc :<C-u>Gcommit<Enter>
 nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Space>gb :<C-u>Gblame<Enter>
 
-" 行末にセミコロンを入れる設定だけどいまいち
-" function! IsEndSemicolon()
-  " let c = getline(".")[col("$")-2]
-  " if c != ';'
-    " return 1
-  " else
-    " return 0
-  " endif
-" endfunction
-" inoremap <expr>;; IsEndSemicolon() ? "<C-O>$;<CR>" : "<C-O>$<CR>"
-"
+"" 行末にセミコロンを入れる設定だけどいまいち
+"" function! IsEndSemicolon()
+"  " let c = getline(".")[col("$")-2]
+"  " if c != ';'
+"    " return 1
+"  " else
+"    " return 0
+"  " endif
+"" endfunction
+"" inoremap <expr>;; IsEndSemicolon() ? "<C-O>$;<CR>" : "<C-O>$<CR>"
+""
