@@ -467,6 +467,11 @@ map <silent> sp :call YanktmpPaste_p()<CR>
 map <silent> sP :call YanktmpPaste_P()<CR>
 
 " fugitive
+": カーソル下にあるファイルを edit
+" -: カーソル下にあるファイルを git add
+" p: カーソル下にあるファイルを git add -p
+" D: カーソル下にあるファイルを git diff[ --cached]
+" C: git commit
 nnoremap <Space>gd :<C-u>Gdiff<Enter>
 nnoremap <Space>gs :<C-u>Gstatus<Enter>
 nnoremap <Space>gl :<C-u>Glog<Enter>
