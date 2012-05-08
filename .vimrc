@@ -226,6 +226,9 @@ Bundle 'yanktmp.vim'
 " 要設定
 " Bundle 'css_color.vim'
 
+" helpをuniteで検索、:Unite help
+Bundle 'git://github.com/tsukkee/unite-help.git'
+
 " Vundleの設定終了
 filetype plugin on
 filetype indent on
@@ -246,11 +249,15 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
-"let g:neocomplcache_dictionary_filetype_lists = {
-"    \ 'default' : '',
-"    \ 'vimshell' : $HOME.'/.vimshell_hist',
-"    \ 'scheme' : $HOME.'/.gosh_completions'
-"    \ }
+" let g:neocomplcache_dictionary_filetype_lists = {
+   " \ 'default' : '',
+   " \ 'vimshell' : $HOME.'/.vimshell_hist'
+   " \ }
+
+let g:neocomplcache_dictionary_filetype_lists = {
+   \ 'default' : '',
+   \ 'ruby' : $HOME.'/.vim/dict/objc.dict'
+   \ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
