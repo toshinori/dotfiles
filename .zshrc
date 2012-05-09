@@ -8,7 +8,6 @@ darwin*)
 	alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
   alias ls="ls -lG"
   alias ll="ls -lG"
-  PATH=$HOME/bin:$PATH
 	;;
 linux*)
 	alias vi='/usr/local/vim/bin/vim'
@@ -18,6 +17,7 @@ linux*)
 	;;
 esac
 
+PATH=$HOME/bin:$PATH
 alias sudo='sudo '
 alias tmux='tmux -2'	# -2を付けないとVimが256にならない
 alias cp='cp -r'
