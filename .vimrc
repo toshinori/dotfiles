@@ -415,10 +415,11 @@ function! s:unite_my_settings()
 endfunction
 
 " smartchr
-autocmd FileType ruby inoremap <buffer> <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
+autocmd FileType ruby,coffee inoremap <buffer> <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 autocmd FileType ruby inoremap <buffer> <expr> + smartchr#one_of(' + ',  '+')
 autocmd FileType ruby inoremap <buffer> <expr> - smartchr#one_of(' - ',  '-')
-autocmd FileType ruby inoremap <buffer> <expr> # smartchr#one_of('# ',  '#{}', '#')
+autocmd FileType coffee inoremap <buffer> <expr> - smartchr#one_of(' - ', ' ->', '-')
+autocmd FileType ruby,coffee inoremap <buffer> <expr> # smartchr#one_of('# ',  '#{}', '#')
 
 " autocmd FileType RUBY inoremap # #<Space>
 
