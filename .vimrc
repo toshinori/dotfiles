@@ -297,7 +297,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,markdown,eruby setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -307,6 +307,7 @@ if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.coffee = '[^. *\t]\.\w*\|\h\w*::'
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
@@ -417,7 +418,7 @@ endfunction
 autocmd FileType ruby inoremap <buffer> <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
 autocmd FileType ruby inoremap <buffer> <expr> + smartchr#one_of(' + ',  '+')
 autocmd FileType ruby inoremap <buffer> <expr> - smartchr#one_of(' - ',  '-')
-autocmd FileType ruby inoremap <buffer> <expr> # smartchr#one_of('# ',  '#{', '#')
+autocmd FileType ruby inoremap <buffer> <expr> # smartchr#one_of('# ',  '#{}', '#')
 
 " autocmd FileType RUBY inoremap # #<Space>
 
@@ -453,7 +454,8 @@ call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 "
 " vim-autoclose
 let g:autoclose_on = 1
-let g:AutoClosePairs_add = "|"
+autocmd FileType ruby let b:AutoClosePairs = AutoClose#DefaultPairsModified("|", "")
+" let g:AutoClosePairs_add = "|"
 
 noremap <Leader>t :vimgrep /TODO/j **/*.rb **/*.js **/*.erb
 autocmd QuickfixCmdPost vimgrep cw
@@ -480,14 +482,3 @@ nnoremap <Space>gc :<C-u>Gcommit<Enter>
 nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Space>gb :<C-u>Gblame<Enter>
 
-"" 行末にセミコロンを入れる設定だけどいまいち
-"" function! IsEndSemicolon()
-"  " let c = getline(".")[col("$")-2]
-"  " if c != ';'
-"    " return 1
-"  " else
-"    " return 0
-"  " endif
-"" endfunction
-"" inoremap <expr>;; IsEndSemicolon() ? "<C-O>$;<CR>" : "<C-O>$<CR>"
-""
