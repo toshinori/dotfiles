@@ -236,6 +236,7 @@ filetype indent on
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
+"
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
 " Use smartcase.
@@ -254,10 +255,10 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
    " \ 'vimshell' : $HOME.'/.vimshell_hist'
    " \ }
 
-let g:neocomplcache_dictionary_filetype_lists = {
-   \ 'default' : '',
-   \ 'ruby' : $HOME.'/.vim/dict/objc.dict'
-   \ }
+" let g:neocomplcache_dictionary_filetype_lists = {
+   " \ 'default' : '',
+   " \ 'ruby' : $HOME.'/.vim/dict/objc.dict'
+   " \ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
