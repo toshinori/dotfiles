@@ -229,6 +229,10 @@ Bundle 'yanktmp.vim'
 " helpをuniteで検索、:Unite help
 Bundle 'git://github.com/tsukkee/unite-help.git'
 
+" jQueryなどのリファレンスを参照
+" Bundle 'git://github.com/soh335/vim-ref-jquery.git'
+Bundle 'git://github.com/mojako/ref-sources.vim.git'
+
 " Vundleの設定終了
 filetype plugin on
 filetype indent on
@@ -414,6 +418,17 @@ function! s:unite_my_settings()
         nmap <silent><buffer> <ESC><ESC> q
         imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
+
+" ref-sources
+let g:ref_alc2_overwrite_alc = 1
+" jquery doc
+let g:ref_jquery_doc_path = $HOME. '/doc/jqapi/'
+" 結果に合わせて、開かれるウインドウの縦サイズを調節します。
+" let g:ref_auto_resize = 1
+" wikipedia に加え、英語版で検索する為の wikipedia_en が登録されます。
+let g:ref_wikipedia_lang = ['ja', 'en']
+" キャッシュを有効にする
+let g:ref_use_cache = 1
 
 " smartchr
 autocmd FileType ruby,coffee inoremap <buffer> <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
