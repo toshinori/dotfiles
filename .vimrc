@@ -53,6 +53,10 @@ set hidden
 
 " 他で変更されたら自動で読み込む
 set autoread
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
 
 " BSが効かない場合の対処
 set backspace=indent,eol,start
@@ -432,6 +436,7 @@ let g:ref_use_cache = 1
 
 " smartchr
 autocmd FileType ruby,coffee inoremap <buffer> <expr> = smartchr#one_of(' = ',  ' == ',  ' === ',  '=')
+autocmd FileType haml inoremap <buffer> <expr> = smartchr#one_of('= ',  '=')
 autocmd FileType ruby inoremap <buffer> <expr> + smartchr#one_of(' + ',  '+')
 autocmd FileType ruby inoremap <buffer> <expr> - smartchr#one_of(' - ',  '-')
 autocmd FileType coffee inoremap <buffer> <expr> - smartchr#one_of(' - ', ' ->', '-')
