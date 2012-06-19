@@ -17,6 +17,9 @@ linux*)
 	;;
 esac
 
+# rbenv
+eval "$(rbenv init -)"
+
 PATH=$HOME/bin:$PATH
 alias sudo='sudo '
 alias tmux='tmux -2'	# -2を付けないとVimが256にならない
