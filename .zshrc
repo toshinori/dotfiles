@@ -18,12 +18,13 @@ linux*)
 esac
 
 # rbenv
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 PATH=$HOME/bin:$PATH
 alias sudo='sudo '
-alias tmux='tmux -2'	# -2を付けないとVimが256にならない
+# alias tmux='tmux -2'	# -2を付けないとVimが256にならない
 alias cp='cp -r'
+alias gst='git status -s'
 
 ## Rsense
 export RSENSE_HOME=/opt/rsense-0.3
