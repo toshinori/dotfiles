@@ -15,7 +15,7 @@ set statusline=%F%m%r%h%w\%=[TYPE=%Y]\[FORMAT=%{&ff}]\[ENC=%{&fileencoding}]\[LO
 set number
 
 "ステータスは常に2行
-set laststatus=2
+" set laststatus=2
 
 " シンタックスハイライトON
 syntax on
@@ -99,6 +99,7 @@ colorscheme molokai
 " http://blog.appling.jp/archives/140
 " ESCキー2度押しでハイライトを消す
 nnoremap <Esc><Esc> :<C-u>set nohlsearch<Return>
+
 nnoremap / :<C-u>set hlsearch<Return>/
 nnoremap ? :<C-u>set hlsearch<Return>?
 nnoremap * :<C-u>set hlsearch<Return>*
@@ -364,7 +365,7 @@ let g:quickrun_config = {}
 let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
 set splitright
-""set g:quickrun_config={}
+" set g:quickrun_config={}
 
 " rspec用quickrun
 ""let g:quickrun_config['ruby.rspec'] = {'command': 'rspec', 'cmdopt': '-c --format progress -I .', 'exec': ['bundle exec %c %o %s %a'], 'output_filetype': 'rspec-result'}

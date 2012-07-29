@@ -25,6 +25,7 @@ alias sudo='sudo '
 # alias tmux='tmux -2'	# -2を付けないとVimが256にならない
 alias cp='cp -r'
 alias gst='git status -s'
+alias be='bundle exec'
 
 ## Rsense
 export RSENSE_HOME=/opt/rsense-0.3
