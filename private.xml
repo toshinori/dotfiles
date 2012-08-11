@@ -10,5 +10,12 @@
       <autogen>--KeyToKey-- KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
       <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
     </item>
+    <item>
+      <name>LeaveInsMode with EISUU(SublimetText2)</name>
+      <identifier>com.sublimetext.2</identifier>
+      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
+      <autogen>--KeyToKey-- KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+      <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+    </item>
   </list>
 </root>
