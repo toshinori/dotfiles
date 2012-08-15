@@ -2,9 +2,7 @@
 	name = toshinori
 	email = toshinori@imaizumi.jp
 [color]
-  	# colorの設定(以下のコマンドは自動で色つける)
-  	status = auto
-  	diff = auto
-  	branch = auto
-  	interactive = auto
-  	grep = auto
+  ui = true
+  diff = true
+[alias]
+  graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
