@@ -19,6 +19,11 @@ esac
 
 # rbenv
 # eval "$(rbenv init -)"
+if [ -d ${HOME}/.rbenv  ] ; then
+  PATH=${HOME}/.rbenv/bin:${PATH}
+  export PATH
+  eval "$(rbenv init -)"
+fi
 
 PATH=$HOME/bin:$PATH
 alias sudo='sudo '
@@ -133,3 +138,7 @@ zshaddhistory() {
         ]]
 }
 
+precmd () {
+  echo -ne "\e]2;${PWD}\a"
+  echo -ne "\e]1;${PWD:t}\a"
+}
