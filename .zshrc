@@ -138,7 +138,10 @@ zshaddhistory() {
         ]]
 }
 
-precmd () {
-  echo -ne "\e]2;${PWD}\a"
-  echo -ne "\e]1;${PWD:t}\a"
-}
+# precmd () {
+  # echo -ne "\e]2;${PWD}\a"
+  # echo -ne "\e]1;${PWD:t}\a"
+# }
+
+alias ctags="`brew --prefix`/bin/ctags"
+
