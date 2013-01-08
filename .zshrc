@@ -145,3 +145,9 @@ zshaddhistory() {
 
 alias ctags="`brew --prefix`/bin/ctags"
 
+export BUNDLER_EDITOR=subl
+
+ . `brew --prefix`/etc/profile.d/z.sh
+ function precmd () {
+   z --add "$(pwd -P)"
+ }
