@@ -1,21 +1,64 @@
 <?xml version="1.0"?>
 <root>
- <symbol_map type="KeyCode" name="KAKKO" value="0x21" />
-  <list>
-    <item>
-      <name>LeaveInsMode with EISUU(Terminal)</name>
-      <identifier>private.app_terminal_esc_with_eisuu</identifier>
-      <only>TERMINAL</only>
-      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
-      <autogen>--KeyToKey-- KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
-      <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
-    </item>
-    <item>
-      <name>LeaveInsMode with EISUU(SublimetText2)</name>
-      <identifier>com.sublimetext.2</identifier>
-      <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
-      <autogen>--KeyToKey-- KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
-      <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
-    </item>
-  </list>
+  <symbol_map type="KeyCode" name="KAKKO" value="0x21" />
+
+  <!-- FILCO Majestouch MINILA -->
+  <devicevendordef>
+    <vendorname>FILCO</vendorname>
+    <vendorid>0x04b4</vendorid>
+  </devicevendordef>
+  <deviceproductdef>
+    <productname>MAJESTOUCH_MINILA</productname>
+    <productid>0x0101</productid>
+  </deviceproductdef>
+
+  <!-- Global -->
+  <item>
+    <name>Change Ctrl + N to Down</name>
+    <identifier>private.ctrl_n_to_down</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::N, ModifierFlag::CONTROL_L,
+      KeyCode::CURSOR_DOWN
+    </autogen>
+  </item>
+  <item>
+    <name>Change Ctrl + P to Up</name>
+    <identifier>private.ctrl_p_to_up</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::P, ModifierFlag::CONTROL_L,
+      KeyCode::CURSOR_UP
+    </autogen>
+  </item>
+  <item>
+    <name>Change Ctrl + J to Escape</name>
+    <identifier>private.ctrl_j_to_escape</identifier>
+    <autogen>
+      __KeyToKey__
+      KeyCode::J, ModifierFlag::CONTROL_L,
+      KeyCode::ESCAPE,
+      KeyCode::JIS_EISUU
+    </autogen>
+  </item>
+
+  <!-- Terminal -->
+  <item>
+    <name>LeaveInsMode with EISUU(Terminal)</name>
+    <identifier>private.app_terminal_esc_with_eisuu</identifier>
+    <only>TERMINAL</only>
+    <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
+    <autogen>--KeyToKey-- KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+  </item>
+
+  <!-- Sublime Text 2 -->
+  <item>
+    <name>LeaveInsMode with EISUU(SublimetText2)</name>
+    <identifier>com.sublimetext.2</identifier>
+    <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU</autogen>
+    <autogen>--KeyToKey-- KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::KAKKO, ModifierFlag::CONTROL_L, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+    <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
+  </item>
+
 </root>
