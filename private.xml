@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <root>
   <symbol_map type="KeyCode" name="KAKKO" value="0x21" />
+  <symbol_map type="KeyCode" name="APPLICATION" value="0x6e" />
 
   <!-- FILCO Majestouch MINILA -->
   <devicevendordef>
@@ -61,4 +62,40 @@
     <autogen>--KeyToKey-- KeyCode::C, VK_CONTROL, KeyCode::C, VK_CONTROL, KeyCode::JIS_EISUU</autogen>
   </item>
 
+  <!-- Only Filco Majestouch MINILA -->
+  <item>
+    <name>Only Filco Majestouch MINILA </name>
+    <identifier>private.application_to_command</identifier>
+    <device_only>DeviceVendor::FILCO,DeviceProduct::MAJESTOUCH_MINILA</device_only>
+    <autogen>
+      --KeyToKey--
+      KeyCode::APPLICATION,
+      KeyCode::OPTION_R
+    </autogen>
+    <autogen>
+      --KeyToKey--
+      KeyCode::OPTION_R,
+      KeyCode::COMMAND_R
+    </autogen>
+    <autogen>
+      --KeyToKey--
+      KeyCode::OPTION_L,
+      KeyCode::COMMAND_L
+    </autogen>
+    <autogen>
+      --KeyToKey--
+      KeyCode::COMMAND_L,
+      KeyCode::OPTION_L
+    </autogen>
+    <autogen>
+      --KeyToKey--
+      KeyCode::HOME,
+      KeyCode::A, ModifierFlag::CONTROL_L
+    </autogen>
+    <autogen>
+      --KeyToKey--
+      KeyCode::END,
+      KeyCode::E, ModifierFlag::CONTROL_L
+    </autogen>
+  </item>
 </root>
