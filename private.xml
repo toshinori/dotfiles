@@ -14,6 +14,14 @@
     <productid>0x0101</productid>
   </deviceproductdef>
 
+  <devicevendordef>
+    <vendorname>TOPRE</vendorname>
+    <vendorid>0x0853</vendorid>
+  </devicevendordef>
+  <deviceproductdef>
+    <productname>Realforce86</productname>
+    <productid>0x010e</productid>
+  </deviceproductdef>
   <!-- Global -->
   <item>
     <name>Change Ctrl + N to Down</name>
@@ -107,6 +115,33 @@
       --KeyToKey--
       KeyCode::HELP,
       KeyCode::ESCAPE
+    </autogen>
+  </item>
+
+  <!-- Only Topre RealForce86 -->
+  <item>
+    <name>Only Topre </name>
+    <identifier>private.topre</identifier>
+    <device_only>DeviceVendor::TOPRE,DeviceProduct::Realforce86</device_only>
+    <autogen>
+      --KeyToKey--
+      KeyCode::APPLICATION,
+      KeyCode::OPTION_R
+    </autogen>
+    <autogen>
+      --KeyToKey--
+      KeyCode::OPTION_R,
+      KeyCode::COMMAND_R
+    </autogen>
+    <autogen>
+      --KeyToKey--
+      KeyCode::OPTION_L,
+      KeyCode::COMMAND_L
+    </autogen>
+    <autogen>
+      --KeyToKey--
+      KeyCode::COMMAND_L,
+      KeyCode::OPTION_L
     </autogen>
   </item>
 </root>
